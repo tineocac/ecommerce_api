@@ -8,7 +8,7 @@ db.authenticate()
 
 db.sync()
   .then(() => console.log("Succesful synchronization"))
-  .catch((error) => console.log(error));
+  .catch((error) => console.log(error))
 
 module.exports = app;
 
