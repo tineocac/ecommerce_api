@@ -15,7 +15,7 @@ db.authenticate()
   .then(() => console.log("Succeful aunthentication"))
   .catch((error) => console.log(error));
 
-db.sync({ force: false })
+db.sync({ alter: true })
   .then(() => console.log("Succesful synchronization"))
   .catch((error) => console.log(error));
 
