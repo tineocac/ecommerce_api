@@ -1,6 +1,5 @@
 const db = require("../utils/database");
 const { DataTypes } = require("sequelize");
-// const { Users } = require("./index");
 
 const Orders = db.define("orders", {
   id: {
@@ -17,9 +16,6 @@ const Orders = db.define("orders", {
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    // references: {
-    //   model: Users,
-    // },
     field: "user_id",
   },
   status: {

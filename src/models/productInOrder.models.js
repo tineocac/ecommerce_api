@@ -1,6 +1,5 @@
 const db = require("../utils/database");
 const { DataTypes } = require("sequelize");
-// const { Orders, Products } = require('./index');
 
 const ProductInOrder = db.define(
   "product_in_order",
@@ -14,17 +13,11 @@ const ProductInOrder = db.define(
     orderId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      // references: {
-      //   model: Orders,
-      // },
       field: "order_id",
     },
     productId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      // references: {
-      //   model: Products,
-      // },
       field: "product_id",
     },
     quantity: {

@@ -1,6 +1,5 @@
 const db = require("../utils/database");
 const { DataTypes } = require("sequelize");
-// const { Users } = require("./index");
 
 const Cart = db.define(
   "cart",
@@ -14,9 +13,6 @@ const Cart = db.define(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      // references: {
-      //   model: Users,
-      // },
       field: "user_id",
     },
     totalPrice: {
