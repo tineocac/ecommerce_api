@@ -6,20 +6,20 @@ const userLogin = async (req, res, next) => {
     console.log(credentials.password);
     const result = await AuthServices.authenticate(credentials);
     if (result) {
-      res.json({ message: "Succesful login" });
+      const { id, username, email } = result.result;
+      const userData = { id, username, email };
+      const token = await AuthServices.getToken(userData);
+      userData.token = token
+      res.json({ ...userData});
     } else if (result === null) {
-      res
-        .status(400)
-        .json({
-          message:
-            "Oops, it seems that the email address you entered is incorrect or does not exist.",
-        });
+      res.status(400).json({
+        message:
+          "Oops, it seems that the email address you entered is incorrect or does not exist.",
+      });
     } else {
-      res
-        .status(400)
-        .json({
-          message: "Oops, it seems that the password you entered is incorrect",
-        });
+      res.status(400).json({
+        message: "Oops, it seems that the password you entered is incorrect",
+      });
     }
   } catch (error) {
     next({

@@ -1,5 +1,7 @@
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 class AuthServices {
   static async authenticate(credentials) {
@@ -14,6 +16,18 @@ class AuthServices {
       } else {
         return result;
       }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async getToken(userData) {
+    try {
+      const token = jwt.sign(userData, process.env.SECRET, {
+        expiresIn: "2h",
+        algorithm: "HS512",
+      });
+      return token;
     } catch (error) {
       throw error;
     }
