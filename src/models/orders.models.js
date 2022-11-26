@@ -20,7 +20,7 @@ const Orders = db.define("orders", {
     // references: {
     //   model: Users,
     // },
-    // field: "user_id",
+    field: "user_id",
   },
   status: {
     type: DataTypes.ENUM("complete", "pending"),
