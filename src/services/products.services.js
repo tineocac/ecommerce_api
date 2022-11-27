@@ -1,4 +1,4 @@
-const { Products, Users } = require("../models");
+const { Products, Users, ProductInCart } = require("../models");
 
 class ProductsServices {
   static async getProducts() {
@@ -9,6 +9,7 @@ class ProductsServices {
         },
         include: {
           model: Users,
+          as: "seller",
           attributes: ["username"],
         },
       });
@@ -21,6 +22,15 @@ class ProductsServices {
   static async create(newProduct) {
     try {
       const result = await Products.create(newProduct);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async addProduct(product) {
+    try {
+      const result = await ProductInCart.create(product);
       return result;
     } catch (error) {
       throw error;

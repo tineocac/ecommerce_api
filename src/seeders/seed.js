@@ -1,4 +1,4 @@
-const { Users, Products } = require("../models");
+const { Users, Products, Cart } = require("../models");
 const db = require("../utils/database");
 const initModels = require("../models/initModels");
 
@@ -80,9 +80,25 @@ const products = [
   },
 ];
 
+const cart = [
+  { userId: 1, totalPrice: 1 },
+  { userId: 2, totalPrice: 1 },
+  { userId: 3, totalPrice: 1 },
+  { userId: 4, totalPrice: 1 },
+  { userId: 5, totalPrice: 1 },
+  { userId: 6, totalPrice: 1 },
+  { userId: 7, totalPrice: 1 },
+  { userId: 8, totalPrice: 1 },
+  { userId: 9, totalPrice: 1 },
+  { userId: 10, totalPrice: 1 },
+];
+
 db.sync({ force: true }).then(() => {
   users.forEach(async (user) => await Users.create(user));
   setTimeout(() => {
     products.forEach(async (product) => await Products.create(product));
   }, 100);
+  setTimeout(() => {
+    cart.forEach((cart) => Cart.create(cart));
+  }, 200);
 });
