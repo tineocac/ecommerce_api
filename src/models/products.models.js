@@ -11,6 +11,7 @@ const Products = db.define("products", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
   price: {
     type: DataTypes.FLOAT,
@@ -29,6 +30,9 @@ const Products = db.define("products", {
     type: DataTypes.INTEGER,
     allowNull: false,
     field: "user_id",
+  },
+  image: {
+    type: DataTypes.STRING,
   },
 });
 

@@ -13,4 +13,18 @@ const getAllProducts = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllProducts };
+const createNewProduct = async (req, res, next) => {
+  try {
+    const newProduct = req.body;
+    const result = await ProductsServices.create(newProduct);
+    res.status(201).json({ message: "New product was created succesfuly" });
+  } catch (error) {
+    next({
+      status: 400,
+      errorContent: error,
+      message: "Oops, something went wrong, verify the submitted data",
+    });
+  }
+};
+
+module.exports = { getAllProducts, createNewProduct };
