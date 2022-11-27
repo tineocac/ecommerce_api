@@ -1,4 +1,4 @@
-const { Users } = require("../models");
+const { Users, Products } = require("../models");
 const db = require("../utils/database");
 const initModels = require("../models/initModels");
 
@@ -17,6 +17,72 @@ const users = [
   { username: "Karen", email: "karen@gmail.com", password: "1234" },
 ];
 
+const products = [
+  {
+    name: "Phone",
+    price: 100.99,
+    availableQty: 24,
+    userId: 2,
+  },
+  {
+    name: "Laptop",
+    price: 599.99,
+    availableQty: 2,
+    userId: 2,
+  },
+  {
+    name: "Desktop",
+    price: 989.99,
+    availableQty: 12,
+    userId: 2,
+  },
+  {
+    name: "Audifonos",
+    price: 15.12,
+    availableQty: 6,
+    userId: 2,
+  },
+  {
+    name: "Altavoces",
+    price: 22.99,
+    availableQty: 12,
+    userId: 2,
+  },
+  {
+    name: "Monitor",
+    price: 125.1,
+    availableQty: 20,
+    userId: 2,
+  },
+  {
+    name: "Teclado",
+    price: 25.66,
+    availableQty: 200,
+    userId: 2,
+  },
+  {
+    name: "Mouse",
+    price: 10.99,
+    availableQty: 200,
+    userId: 2,
+  },
+  {
+    name: "Impresora",
+    price: 236.19,
+    availableQty: 5,
+    userId: 2,
+  },
+  {
+    name: "Servidor",
+    price: 1678.0,
+    availableQty: 1,
+    userId: 2,
+  },
+];
+
 db.sync({ force: true }).then(() => {
   users.forEach(async (user) => await Users.create(user));
+  setTimeout(() => {
+    products.forEach(async (product) => await Products.create(product));
+  }, 100);
 });
