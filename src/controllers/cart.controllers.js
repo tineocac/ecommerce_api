@@ -29,4 +29,18 @@ const showProductsInCart = async (req, res, next) => {
   }
 };
 
-module.exports = { addProductsInCart, showProductsInCart };
+const makePurchase = async (req, res, next) => {
+  try {
+    const { cartId } = req.params;
+    const result = await CartServices.buy(cartId);
+    res.json({ message: "Succesful purchase" });
+  } catch (error) {
+    next({
+      status: 400,
+      errorContent: error,
+      message: "Oops, something went wrong",
+    });
+  }
+};
+
+module.exports = { addProductsInCart, showProductsInCart, makePurchase };
