@@ -18,7 +18,7 @@ const ProductInCart = db.define(
     productId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: "product_id"
+      field: "product_id",
     },
     quantity: {
       type: DataTypes.INTEGER,
@@ -26,11 +26,10 @@ const ProductInCart = db.define(
     },
     price: {
       type: DataTypes.FLOAT,
-      allowNull: false,
     },
     status: {
-      type: DataTypes.ENUM("available", "notAvailable"),
-      defaultValue: "available",
+      type: DataTypes.ENUM("pending", "purchased"),
+      defaultValue: "pending",
     },
   },
   {

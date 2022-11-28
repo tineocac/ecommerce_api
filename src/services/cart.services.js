@@ -15,7 +15,7 @@ class CartServices {
     try {
       const result = await ProductInCart.findAll({
         where: { cartId },
-        attributes: ["quantity"],
+        attributes: ["quantity", "status"],
         include: {
           model: Products,
           as: "item",

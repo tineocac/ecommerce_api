@@ -5,6 +5,6 @@ const { authMiddleware } = require("../middlewares");
 
 router.post("/products/:cartId/addProduct", authMiddleware, addProductsInCart);
 
-router.get("/:cartId/showProducts", showProductsInCart);
+router.get("/:cartId/showProducts", authMiddleware, showProductsInCart);
 
 module.exports = router;
