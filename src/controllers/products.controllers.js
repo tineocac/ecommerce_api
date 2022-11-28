@@ -27,18 +27,4 @@ const createNewProduct = async (req, res, next) => {
   }
 };
 
-const addProductInCart = async (req, res, next) => {
-  try {
-    const product = req.body;
-    const result = await ProductsServices.addProduct(product);
-    res.status(201).json(result);
-  } catch (error) {
-    next({
-      status: 400,
-      errorContent: error,
-      message: "Oops, something went wrong",
-    });
-  }
-};
-
-module.exports = { getAllProducts, createNewProduct, addProductInCart };
+module.exports = { getAllProducts, createNewProduct };

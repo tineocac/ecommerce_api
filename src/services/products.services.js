@@ -27,15 +27,6 @@ class ProductsServices {
       throw error;
     }
   }
-
-  static async addProduct(product) {
-    try {
-      const result = await ProductInCart.create(product);
-      return result;
-    } catch (error) {
-      throw error;
-    }
-  }
 }
 
 module.exports = ProductsServices;
