@@ -15,4 +15,18 @@ const addProductsInCart = async (req, res, next) => {
   }
 };
 
-module.exports = { addProductsInCart };
+const showProductsInCart = async (req, res, next) => {
+  try {
+    const { cartId } = req.params;
+    const result = await CartServices.showProducts(cartId);
+    res.json(result);
+  } catch (error) {
+    next({
+      status: 400,
+      errorContent: error,
+      message: "Oops, something went wrong",
+    });
+  }
+};
+
+module.exports = { addProductsInCart, showProductsInCart };
