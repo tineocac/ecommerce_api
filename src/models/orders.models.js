@@ -8,11 +8,6 @@ const Orders = db.define("orders", {
     autoIncrement: true,
     allowNull: false,
   },
-  totalPrice: {
-    type: DataTypes.FLOAT,
-    allowNull: false,
-    field: "total_price",
-  },
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -20,7 +15,13 @@ const Orders = db.define("orders", {
   },
   status: {
     type: DataTypes.ENUM("complete", "pending"),
-    default: "pending",
+    defaultValue: "pending",
+  },
+  totalPrice: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+    field: "total_price",
+    defaultValue: 0,
   },
 });
 

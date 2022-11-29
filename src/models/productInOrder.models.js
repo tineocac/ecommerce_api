@@ -26,7 +26,6 @@ const ProductInOrder = db.define(
     },
     price: {
       type: DataTypes.FLOAT,
-      allowNull: false,
     },
     status: {
       type: DataTypes.ENUM("complete", "pending"),
