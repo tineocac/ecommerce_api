@@ -1,4 +1,5 @@
 const { CartServices } = require("../services");
+const transporter = require("../utils/mailer");
 
 const addProductsInCart = async (req, res, next) => {
   try {
@@ -33,7 +34,14 @@ const makePurchase = async (req, res, next) => {
   try {
     const { cartId } = req.params;
     const result = await CartServices.buy(cartId);
+    const user = await CartServices.getUser(cartId);
     res.json({ message: "Succesful purchase" });
+    transporter.sendMail({
+      from: "<carlostineocac@gmail.com>",
+      to: user.email,
+      subject: "Sccesful purchase",
+      html: "<h1>Thanks for you purchase, enjoy it</h1>",
+    });
   } catch (error) {
     next({
       status: 400,

@@ -6,7 +6,7 @@ const authMiddleware = (req, res, next) => {
   if (tokenBearer) {
     const token = tokenBearer.replace("Bearer ", "");
     try {
-      const decoded = jwt.verify(token, process.env.SECRET, {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET, {
         algorithm: "HS512",
       });
       next();

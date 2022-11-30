@@ -1,4 +1,4 @@
-const { ProductInCart, Products } = require("../models");
+const { ProductInCart, Products, Users } = require("../models");
 
 class CartServices {
   static async addProducts(product) {
@@ -35,6 +35,17 @@ class CartServices {
         { status: "purchased" },
         { where: { cartId } }
       );
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async getUser(cartId) {
+    try {
+      const result = await Users.findOne({
+        where: { id: cartId },
+      });
       return result;
     } catch (error) {
       throw error;
