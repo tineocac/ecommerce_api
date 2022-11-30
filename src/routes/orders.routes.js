@@ -6,13 +6,14 @@ const {
   makeOrder,
   getAllOrders,
 } = require("../controllers");
+const { authMiddleware } = require("../middlewares");
 
-router.post("/orders/:userId", createNewOrder);
+router.post("/orders/:userId", authMiddleware, createNewOrder);
 
-router.post("/orders/:orderId/products", addProductsInOrder);
+router.post("/orders/:orderId/products", authMiddleware, addProductsInOrder);
 
-router.put("/orders/:id/makeOrder", makeOrder);
+router.put("/orders/:id/makeOrder", authMiddleware, makeOrder);
 
-router.get("/orders/:userId", getAllOrders);
+router.get("/orders/:userId", authMiddleware, getAllOrders);
 
 module.exports = router;

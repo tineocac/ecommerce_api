@@ -11,7 +11,6 @@ const createUser = async (req, res, next) => {
       from: "<carlostineocac@gmail.com>",
       to: result.email,
       subject: `Welcome ${result.username} to the best ecommerce`,
-      // text: `Hi ${result.username}, you has created a new user in the best ecommerce`,
       html: welcomeTemplate(`${result.username}`),
     });
   } catch (error) {
