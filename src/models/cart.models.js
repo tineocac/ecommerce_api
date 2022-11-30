@@ -18,6 +18,7 @@ const Cart = db.define(
     totalPrice: {
       type: DataTypes.INTEGER,
       field: "total_price",
+      defaultValue: 0,
     },
   },
   {
