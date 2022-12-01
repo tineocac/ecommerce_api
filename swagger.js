@@ -11,7 +11,15 @@ const options = {
         "API used to create an ecommerce, make purchases, sell products and perform all kinds of queries related to a market place.",
     },
   },
-  apis: ["./src/routes/users.routes.js", "./src/models/users.models.js"],
+  apis: [
+    "./src/routes/users.routes.js",
+    "./src/models/users.models.js",
+    "./src/routes/products.routes.js",
+    "./src/models/products.models.js",
+    "./src/routes/cart.routes.js",
+    "./src/models/cart.models.js",
+    "./src/routes/auth.routes.js"
+  ],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
