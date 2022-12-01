@@ -29,7 +29,7 @@ const { userLogin } = require("../controllers");
  *                 data:
  *                   type: array
  *                   items:
- *                     $ref: "#/components/schemas/Login"
+ *                     $ref: "#/components/schemas/LoginResponse"
  */
 
 router.post("/auth/login", userLogin);

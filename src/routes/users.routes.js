@@ -14,7 +14,7 @@ const { createUser } = require("../controllers");
  *       content: 
  *         application/json:
  *           schema:
- *             $ref: "#/components/schemas/Users"
+ *             $ref: "#/components/schemas/Register"
  *     responses:
  *       201:
  *         description: OK
