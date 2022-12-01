@@ -9,12 +9,12 @@ const { createUser } = require("../controllers");
  *     summary: Create a new user into the app
  *     tags: [Users]
  *     requestBody:
- *       description: To create a new user you need a username, email and password
+ *       description: To create a new user you need an username, email and password.
  *       required: true
  *       content: 
  *         application/json:
  *           schema:
- *             $ref: "#/components/schemas/Register"
+ *             $ref: "#/components/schemas/Users"
  *     responses:
  *       201:
  *         description: OK
