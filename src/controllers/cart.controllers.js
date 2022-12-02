@@ -3,10 +3,11 @@ const transporter = require("../utils/mailer");
 
 const addProductsInCart = async (req, res, next) => {
   try {
-    const { cartId } = req.params;
+    const { userId } = req.params;
+    const cartId = userId;
     const product = req.body;
     const result = await CartServices.addProducts({ cartId, ...product });
-    res.status(201).json({ message: "Product created succesfully" });
+    res.status(201).json({ message: "Product succesfully added" });
   } catch (error) {
     next({
       status: 400,
@@ -18,8 +19,8 @@ const addProductsInCart = async (req, res, next) => {
 
 const showProductsInCart = async (req, res, next) => {
   try {
-    const { cartId } = req.params;
-    const result = await CartServices.showProducts(cartId);
+    const { userId } = req.params;
+    const result = await CartServices.showProducts(userId);
     res.json(result);
   } catch (error) {
     next({
@@ -32,7 +33,8 @@ const showProductsInCart = async (req, res, next) => {
 
 const makePurchase = async (req, res, next) => {
   try {
-    const { cartId } = req.params;
+    const { userId } = req.params;
+    const cartId = userId
     const result = await CartServices.buy(cartId);
     const user = await CartServices.getUser(cartId);
     res.json({ message: "Succesful purchase" });

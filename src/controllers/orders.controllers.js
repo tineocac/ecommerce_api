@@ -4,7 +4,7 @@ const createNewOrder = async (req, res, next) => {
   try {
     const { userId } = req.params;
     const result = await OrdersServices.createOrder({ userId });
-    res.status(201).json(result);
+    res.status(201).json({message: "Succesfull order created"});
   } catch (error) {
     next({
       status: 400,
@@ -19,7 +19,7 @@ const addProductsInOrder = async (req, res, next) => {
     const { orderId } = req.params;
     const products = req.body;
     const result = await OrdersServices.addProducts({ orderId, ...products });
-    res.status(201).json(result);
+    res.status(201).json({message: 'Succesful added products in order'});
   } catch (error) {
     next({
       status: 400,
@@ -31,8 +31,8 @@ const addProductsInOrder = async (req, res, next) => {
 
 const makeOrder = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const result = await OrdersServices.buy(id);
+    const { orderId } = req.params;
+    const result = await OrdersServices.buy(orderId);
     if (result == 0) {
       res.json({
         message: `Oops, something went wrong, maybe the submitted data is incorrect o the id doesn't exist`,

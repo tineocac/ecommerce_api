@@ -11,10 +11,10 @@ class CartServices {
     }
   }
 
-  static async showProducts(cartId) {
+  static async showProducts(userId) {
     try {
       const result = await ProductInCart.findAll({
-        where: { cartId },
+        where: { userId },
         where: { status: "pending" },
         attributes: ["quantity", "status"],
         include: {
