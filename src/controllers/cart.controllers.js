@@ -42,7 +42,7 @@ const makePurchase = async (req, res, next) => {
       from: "<carlostineocac@gmail.com>",
       to: user.email,
       subject: "Sccesful purchase",
-      html: "<h1>Thanks for you purchase, enjoy it</h1>",
+      html: "<h1>Thanks for you purchase, enjoy it.</h1>",
     });
   } catch (error) {
     next({
